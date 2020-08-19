@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+require('dotenv/config');
 
 // free mongo database https://mlab.com/
 
@@ -19,10 +20,8 @@ app.get('/posts', (req, res) => {
 });
 
 // connect to DB
-mongoose.connect(
-  'mongodb+srv://sivanaray:<Bps@1101>@cluster0.pw8ty.gcp.mongodb.net/<Cluster0>?retryWrites=true&w=majority',
-  { useNewUrlParser: true },
-  () => console.log('db is connected')
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () =>
+  console.log('db is connected')
 );
 
 // to listen to the server

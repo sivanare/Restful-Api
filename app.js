@@ -5,8 +5,11 @@ require('dotenv/config');
 
 // free mongo database https://mlab.com/
 
-// Middleware
+// import Routes
+const postsRoute = require('./routes/posts');
 
+// Middleware
+app.use('/posts', postsRoute);
 // app.use('/posts', () => {
 //   console.log('From middleware');
 // });
@@ -15,13 +18,17 @@ require('dotenv/config');
 app.get('/', (req, res) => {
   res.send('we are on home');
 });
-app.get('/posts', (req, res) => {
-  res.send('we are on posts');
-});
 
+app.get('/about', (req, res) => {
+  res.send('we are on about');
+});
 // connect to DB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () =>
-  console.log('db is connected')
+mongoose.connect(
+  process.env.DB_CONNECTION,
+
+  { useNewUrlParser: true },
+
+  () => console.log('db is connected')
 );
 
 // to listen to the server

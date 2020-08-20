@@ -19,9 +19,8 @@ app.get('/', (req, res) => {
   res.send('we are on home');
 });
 
-app.get('/about', (req, res) => {
-  res.send('we are on about');
-});
+const aboutRoute = require('./routes/about');
+app.use('/about', aboutRoute);
 // connect to DB
 mongoose.connect(
   process.env.DB_CONNECTION,

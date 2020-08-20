@@ -7,9 +7,11 @@ require('dotenv/config');
 
 // import Routes
 const postsRoute = require('./routes/posts');
+const aboutRoute = require('./routes/about');
 
 // Middleware
 app.use('/posts', postsRoute);
+app.use('/about', aboutRoute);
 // app.use('/posts', () => {
 //   console.log('From middleware');
 // });
@@ -19,8 +21,6 @@ app.get('/', (req, res) => {
   res.send('we are on home');
 });
 
-const aboutRoute = require('./routes/about');
-app.use('/about', aboutRoute);
 // connect to DB
 mongoose.connect(
   process.env.DB_CONNECTION,

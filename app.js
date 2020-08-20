@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 require('dotenv/config');
 
 // free mongo database https://mlab.com/
@@ -8,7 +9,7 @@ require('dotenv/config');
 // import Routes
 const postsRoute = require('./routes/posts');
 const aboutRoute = require('./routes/about');
-
+app.use(bodyParser.json());
 // Middleware
 app.use('/posts', postsRoute);
 app.use('/about', aboutRoute);
